@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do</title>
-  <link rel="stylesheet" type="text/css" href="css/users.css">
+  <link rel="stylesheet" type="text/css" href="css/todo.css">
   <script type="text/javascript" src="javascript/todo.js"></script>
 </head>
 <body>
+<button type="button" id="getAllTodo">Get All Todos</button>
 
+<hr/>
 
+<div id="jsonDumpTodo" style="margin-top:20px"> Json will go here</div>
 
+<script>
+  window.onload = function () {
+    console.log("The page is loaded now!");
 
+    var element = document.getElementById('getAllTodo');
+    element.addEventListener("click", getAllTodos, true);
+
+  }
+</script>
 </body>
 </html>
