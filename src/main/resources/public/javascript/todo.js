@@ -3,6 +3,6 @@ function getAllTodos() {
 
   var HttpThingy = new HttpClient();
   HttpThingy.get("/api/todos", function (returned_json) {
-    document.getElementById('jsonDump').innerHTML = returned_json;
+    document.getElementById('jsonDumpTodo').innerHTML = returned_json;
   });
 }
