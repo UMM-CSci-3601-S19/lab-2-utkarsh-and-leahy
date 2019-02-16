@@ -25,6 +25,7 @@ public class Database {
     FileReader reader = new FileReader(userDataFile);
     allUsers = gson.fromJson(reader, User[].class);
     allTodos = gson.fromJson(reader,Todo[].class);
+
   }
 
 
@@ -41,7 +42,7 @@ public class Database {
   }
 
   public Todo getTodo(String id) {
-    return Arrays.stream(allTodos). filter(x -> x._id.equals(id)).findFirst().orElse(null);
+    return Arrays.stream(allTodos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
   }
 
 
@@ -66,7 +67,8 @@ public class Database {
 
   public Todo[] listTodos(Map<String, String[]> queryParams) {
     Todo[] filteredTodos = allTodos;
-    
+
+
     return filteredTodos;
   }
   /**
