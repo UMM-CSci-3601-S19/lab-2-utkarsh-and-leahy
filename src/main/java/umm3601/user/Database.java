@@ -64,6 +64,11 @@ public class Database {
     return filteredUsers;
   }
 
+  public Todo[] listTodos(Map<String, String[]> queryParams) {
+    Todo[] filteredTodos = allTodos;
+
+    return filteredTodos;
+  }
   /**
    * Get an array of all the users having the target age.
    *

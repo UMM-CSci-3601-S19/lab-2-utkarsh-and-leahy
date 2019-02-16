@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import spark.Request;
 import spark.Response;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
 import static umm3601.Util.*;
@@ -32,5 +31,10 @@ public class TodoController {
     }
   }
 
+  public JsonObject getTodos(Request req,Response res) {
+    res.type("application/json");
+    Todo[] todos = database.listTodos(req.queryMap().toMap());
+    return buildSuccessJsonResponse("todo",gson.toJsonTree(todos));
+  }
 
 }
