@@ -24,15 +24,9 @@ public class Database {
     Gson gson = new Gson();
     FileReader reader = new FileReader(userDataFile);
     allUsers = gson.fromJson(reader, User[].class);
+    allTodos = gson.fromJson(reader,Todo[].class);
   }
 
-
-
-  public DatabaseTodo(String todoDataFile) throws IOException {
-    Gson gson = new Gson();
-    FileReader reader = new FileReader(todoDataFile);
-    allTodos = gson.fromJson(reader, Todo[].class);
-  }
 
   /**
    * Get the single user specified by the given ID. Return
@@ -45,6 +39,11 @@ public class Database {
   public User getUser(String id) {
     return Arrays.stream(allUsers).filter(x -> x._id.equals(id)).findFirst().orElse(null);
   }
+
+  public Todo getTodo(String id) {
+    return Arrays.stream(allTodos). filter(x -> x._id.equals(id)).findFirst().orElse(null);
+  }
+
 
   /**
    * Get an array of all the users satisfying the queries in the params.
