@@ -18,11 +18,20 @@ import java.util.Map;
 public class Database {
 
   private User[] allUsers;
+  private Todo[] allTodos;
 
   public Database(String userDataFile) throws IOException {
     Gson gson = new Gson();
     FileReader reader = new FileReader(userDataFile);
     allUsers = gson.fromJson(reader, User[].class);
+  }
+
+
+
+  public DatabaseTodo(String todoDataFile) throws IOException {
+    Gson gson = new Gson();
+    FileReader reader = new FileReader(todoDataFile);
+    allTodos = gson.fromJson(reader, Todo[].class);
   }
 
   /**
