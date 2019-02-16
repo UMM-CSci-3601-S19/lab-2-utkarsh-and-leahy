@@ -2,8 +2,8 @@
 function getAllTodos() {
   console.log("Getting all the todos");
 
-  var HttpThingy = new HttpClient();
-  HttpThingy.get("/api/todo", function (returned_json) {
+  var httpClient = new HttpClient();
+  httpClient.get("/api/todo", function (returned_json) {
     document.getElementById('jsonDumpTodo').innerHTML = returned_json;
   });
 }

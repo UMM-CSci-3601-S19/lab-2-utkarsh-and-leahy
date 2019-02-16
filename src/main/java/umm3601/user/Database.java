@@ -66,7 +66,7 @@ public class Database {
 
   public Todo[] listTodos(Map<String, String[]> queryParams) {
     Todo[] filteredTodos = allTodos;
-
+    
     return filteredTodos;
   }
   /**

@@ -8,8 +8,8 @@
 function getAllUsers() {
   console.log("Getting all the users.");
 
-  var HttpThingy = new HttpClient();
-  HttpThingy.get("/api/users", function (returned_json) {
+  var httpClient = new HttpClient();
+  httpClient.get("/api/users", function (returned_json) {
     document.getElementById('jsonDump').innerHTML = returned_json;
   });
 }
