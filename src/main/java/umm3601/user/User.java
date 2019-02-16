@@ -7,3 +7,5 @@ public class User {
   String company;
   String email;
 }
+
+
