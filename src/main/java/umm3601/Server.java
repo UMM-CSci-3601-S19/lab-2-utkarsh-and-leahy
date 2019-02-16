@@ -20,7 +20,7 @@ public class Server {
 
     // Initialize dependencies
     UserController userController = buildUserController();
-
+    
     // Configure Spark
     port(4567);
     // Specify where assets like images will be "stored"
