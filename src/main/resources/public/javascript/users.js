@@ -10,7 +10,7 @@ function getAllUsers() {
 
   var httpClient = new HttpClient();
   httpClient.get("/api/users", function (returned_json) {
-    document.getElementById('jsonDump').innerHTML = returned_json;
+    document.getElementById('jsonDumpUsers').innerHTML = returned_json;
   });
 }
 
@@ -19,7 +19,7 @@ function getAllUsersByAge() {
 
   var HttpThingy = new HttpClient();
   HttpThingy.get("/api/users?age=" + document.getElementById("age").value, function (returned_json) {
-    document.getElementById('jsonDump').innerHTML = returned_json;
+    document.getElementById('jsonDumpUsers').innerHTML = returned_json;
   });
 }
 

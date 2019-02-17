@@ -7,18 +7,18 @@
   <script type="text/javascript" src="javascript/todo.js"></script>
 </head>
 <body>
-<button type="button" id="getAllTodo">Get All To-Do</button>
+<button type="button" id="getAllTodos">Get All To-Do</button>
 
 <hr/>
 
-<div id="jsonDumpTodo" style="margin-top:20px"> Json will go here</div>
+<div id="jsonDumpTodos" style="margin-top:20px"> Json will go here</div>
 
 
 <script>
   window.onload = function () {
     console.log("The page is loaded now!");
 
-    var element = document.getElementById('getAllTodo');
+    var element = document.getElementById('getAllTodos');
     element.addEventListener("click", getAllTodos, true);
 
   }

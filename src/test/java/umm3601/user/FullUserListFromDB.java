@@ -8,20 +8,20 @@ import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests umm3601.user.Database listUser functionality
+ * Tests umm3601.user.UserDatabase listUser functionality
  */
 public class FullUserListFromDB {
 
   @Test
   public void totalUserCount() throws IOException {
-    Database db = new Database("src/main/data/users.json");
+    UserDatabase db = new UserDatabase("src/main/data/users.json");
     User[] allUsers = db.listUsers(new HashMap<>());
     assertEquals("Incorrect total number of users", 10, allUsers.length);
   }
 
   @Test
   public void firstUserInFullList() throws IOException {
-    Database db = new Database("src/main/data/users.json");
+    UserDatabase db = new UserDatabase("src/main/data/users.json");
     User[] allUsers = db.listUsers(new HashMap<>());
     User firstUser = allUsers[0];
     assertEquals("Incorrect name", "Connie Stewart", firstUser.name);

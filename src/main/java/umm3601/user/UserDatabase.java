@@ -15,19 +15,16 @@ import java.util.Map;
  * specified JSON file, and then provide various database-like
  * methods that allow the `UserController` to "query" the "database".
  */
-public class Database {
+
+public class UserDatabase {
 
   private User[] allUsers;
-  private Todo[] allTodos;
 
-  public Database(String userDataFile) throws IOException {
+  public UserDatabase(String userDataFile) throws IOException {
     Gson gson = new Gson();
     FileReader reader = new FileReader(userDataFile);
     allUsers = gson.fromJson(reader, User[].class);
-    allTodos = gson.fromJson(reader,Todo[].class);
-
   }
-
 
   /**
    * Get the single user specified by the given ID. Return
@@ -40,11 +37,6 @@ public class Database {
   public User getUser(String id) {
     return Arrays.stream(allUsers).filter(x -> x._id.equals(id)).findFirst().orElse(null);
   }
-
-  public Todo getTodo(String id) {
-    return Arrays.stream(allTodos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
-  }
-
 
   /**
    * Get an array of all the users satisfying the queries in the params.
@@ -65,12 +57,6 @@ public class Database {
     return filteredUsers;
   }
 
-  public Todo[] listTodos(Map<String, String[]> queryParams) {
-    Todo[] filteredTodos = allTodos;
-
-
-    return filteredTodos;
-  }
   /**
    * Get an array of all the users having the target age.
    *

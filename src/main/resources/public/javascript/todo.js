@@ -4,7 +4,7 @@ function getAllTodos() {
 
   var httpClient = new HttpClient();
   httpClient.get("/api/todo", function (returned_json) {
-    document.getElementById('jsonDumpTodo').innerHTML = returned_json;
+    document.getElementById('jsonDumpTodos').innerHTML = returned_json;
   });
 }
 

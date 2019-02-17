@@ -1,4 +1,4 @@
-package umm3601.user;
+package umm3601.todo;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -12,9 +12,9 @@ import static umm3601.Util.*;
 public class TodoController {
 
   private final Gson gson;
-  private Database database;
+  private TodoDatabase database;
 
-  public TodoController(Database database){
+  public TodoController(TodoDatabase database){
     gson = new Gson();
     this.database = database;
   }
