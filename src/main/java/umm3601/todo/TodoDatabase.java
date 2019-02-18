@@ -36,14 +36,14 @@ public class TodoDatabase {
     // appropriate method below
     if(queryParams.containsKey("status")){
       boolean currentStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
-      if(currentStatus==true) {
+      if(currentStatus) {
         filteredTodos = completeTodo(filteredTodos);
-      } else if(currentStatus==false){
+      } else if(!currentStatus){
         filteredTodos = incompleteTodo(filteredTodos);
       }
     }
 
-
+    
     return filteredTodos;
   }
 

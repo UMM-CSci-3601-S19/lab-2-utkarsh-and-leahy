@@ -8,31 +8,23 @@ function getAllTodos() {
   });
 }
 
-function getTodosByLimit() {
-  console.log("Getting the specified amount of todos.");
+function getLimit(){
+  console.log("Master function");
 
   var httpClient = new HttpClient();
-  httpClient.get("/api/todo?limit=" + document.getElementById("limit").value, function (returned_json) {
+  var URL = "/api/todo?";
+  var limit = document.getElementById("limit").value;
+
+  if(limit !== ""){
+    URL = URL + "limit=" + limit + "&";
+  }
+
+  console.log("Master URL is:" + URL);
+
+  httpClient.get(URL,function (returned_json) {
     document.getElementById('jsonDumpTodos').innerHTML = returned_json;
   });
-}
 
-function getAllCompleteTodos() {
-  console.log("Filtering out the incomplete todos")
-
-  /*var httpClient = new HttpClient();
-  httpClient.get("/api/todo?limit=" + document.getElementById("limit").value, function (returned_json) {
-    document.getElementById('jsonDumpTodos').innerHTML = returned_json;
-  });*/
-}
-
-function getAllIncompleteTodos() {
-  console.log("Filtering out the complete todos")
-
-  /*var httpClient = new HttpClient();
-  httpClient.get("/api/todo?limit=" + document.getElementById("limit").value, function (returned_json) {
-    document.getElementById('jsonDumpTodos').innerHTML = returned_json;
-  });*/
 }
 
 function getCompleteTodos() {
@@ -48,7 +40,7 @@ function getCompleteTodos() {
     URL = URL + "limit=" + limit + "&";
   }
 
-  URL = URL + "status=" + status;
+  URL = URL + "status=" + status + "&";
 
   console.log("The complete URL is:" + URL);
 
@@ -70,34 +62,13 @@ function getIncompleteTodos() {
     URL = URL + "limit=" + limit + "&";
   }
 
-  URL = URL + "status=" + status;
+  URL = URL + "status=" + status + "&";
 
   console.log("The incomplete URL is:" + URL);
 
   httpClient.get(URL,function (returned_json) {
     document.getElementById('jsonDumpTodos').innerHTML = returned_json;
   });
-}
-
-
-function getLimit(){
-  console.log("Master function");
-
-  var httpClient = new HttpClient();
-  var URL = "/api/todo?";
-  var limit = document.getElementById("limit").value;
-
-
-  if(limit !== ""){
-    URL = URL + "limit=" + limit + "&";
-  }
-
-  console.log("Master URL is:" + URL);
-
-  httpClient.get(URL,function (returned_json) {
-    document.getElementById('jsonDumpTodos').innerHTML = returned_json;
-  });
-
 }
 
 

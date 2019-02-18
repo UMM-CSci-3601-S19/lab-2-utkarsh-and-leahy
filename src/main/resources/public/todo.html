@@ -17,8 +17,8 @@
 <button type="button" id="getTodosByLimit"> Limit Todos</button>
 
 <form action="">
-  <input type="radio" id="complete" name="status" value="Complete"> Complete<br>
-  <input type="radio" id="incomplete" name="status" value="Incomplete"> Incomplete<br>
+  <input type="radio" id="complete" name="status" value="true"> Complete<br>
+  <input type="radio" id="incomplete" name="status" value="false"> Incomplete<br>
 </form>
 
 <script>
@@ -29,13 +29,17 @@
     element.addEventListener("click", getAllTodos, true);
 
     element = document.getElementById('getTodosByLimit');
-    element.addEventListener("click", getTodosByLimit, true);
+    element.addEventListener("click", getLimit, true);
 
     var element = document.getElementById('complete');
-    element.addEventListener("click", getAllCompleteTodos, true);
+    element.addEventListener("click", getCompleteTodos, true);
 
     var element = document.getElementById('incomplete');
-    element.addEventListener("click", getAllIncompleteTodos, true);
+    element.addEventListener("click", getIncompleteTodos, true);
+
+    //var element = document.getElementById('both');
+    //element.addEventListener("click", getLimit, true);
+    //element.addEventListener("reset", getLimit, true);
 
   }
 </script>
