@@ -32,6 +32,18 @@ public class TodoDatabase {
       filteredTodos = limitTodo(filteredTodos,targetLimit);
     }
 
+    //Filter by status. Parses the string attached to status(which should be "true" or "false") as a boolean and calls
+    // appropriate method below
+    if(queryParams.containsKey("status")){
+      boolean currentStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
+      if(currentStatus==true) {
+        filteredTodos = completeTodo(filteredTodos);
+      } else if(currentStatus==false){
+        filteredTodos = incompleteTodo(filteredTodos);
+      }
+    }
+
+
     return filteredTodos;
   }
 
@@ -40,5 +52,13 @@ public class TodoDatabase {
     return Arrays.stream(todos).limit(targetLimit).toArray(Todo[]::new);
   }
 
+  //Receives an array from the listTodos function and uses filter to find entries where status is true and returns those as a new array
+  public Todo[] completeTodo(Todo[] todos){
+    return Arrays.stream(todos).filter(x -> x.status == true).toArray(Todo[]::new);
+  }
+  //Receives an array from the listTodos function and uses filter to find entries where status is false and returns those as a new array
+  public Todo[] incompleteTodo(Todo[] todos){
+    return Arrays.stream(todos).filter(x -> x.status == false).toArray(Todo[]::new);
+  }
 
 }

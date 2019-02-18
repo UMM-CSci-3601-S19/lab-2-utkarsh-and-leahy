@@ -13,6 +13,13 @@
 
 <div id="jsonDumpTodos" style="margin-top:20px"> Json will go here</div>
 
+<label for="limit">Limit:</label><input id="limit" type="text" name="limit">
+<button type="button" id="getTodosByLimit"> Limit Todos</button>
+
+<form action="">
+  <input type="radio" id="complete" name="status" value="true"> Complete<br>
+  <input type="radio" id="incomplete" name="status" value="false"> Incomplete<br>
+</form>
 
 <script>
   window.onload = function () {
@@ -20,6 +27,15 @@
 
     var element = document.getElementById('getAllTodos');
     element.addEventListener("click", getAllTodos, true);
+
+    element = document.getElementById('getTodosByLimit');
+    element.addEventListener("click", getLimit, true);
+
+    element = document.getElementById('complete');
+    element.addEventListener("click", getCompleteTodos, true);
+
+    element = document.getElementById('incomplete');
+    element.addEventListener("click", getIncompleteTodos, true);
 
   }
 </script>
