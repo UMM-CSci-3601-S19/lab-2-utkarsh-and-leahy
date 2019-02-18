@@ -25,8 +25,20 @@ public class TodoDatabase {
   public Todo[] listTodos(Map<String, String[]> queryParams) {
     Todo[] filteredTodos = allTodos;
 
+    //Limit the amount of To-Dos shown
+    if(queryParams.containsKey("limit")){
+      int targetLimit = Integer.parseInt(queryParams.get("limit")[0]);
+      // pass filteredTodo array and an integer,targetLimit, to method limitTodo method below and set filteredTodo to the new array returned
+      filteredTodos = limitTodo(filteredTodos,targetLimit);
+    }
 
     return filteredTodos;
   }
+
+    //Receives an array from listTodo, set a max length for it as determined by targetLimit and returns a new array
+  public Todo[] limitTodo(Todo[] todos, int targetLimit){
+    return Arrays.stream(todos).limit(targetLimit).toArray(Todo[]::new);
+  }
+
 
 }

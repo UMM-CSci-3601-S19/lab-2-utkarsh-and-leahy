@@ -15,10 +15,10 @@ function getAllUsers() {
 }
 
 function getAllUsersByAge() {
-  console.log("Getting all the users.");
+  console.log("Getting all the users this age.");
 
-  var HttpThingy = new HttpClient();
-  HttpThingy.get("/api/users?age=" + document.getElementById("age").value, function (returned_json) {
+  var httpClient = new HttpClient();
+  httpClient.get("/api/users?age=" + document.getElementById("age").value, function (returned_json) {
     document.getElementById('jsonDumpUsers').innerHTML = returned_json;
   });
 }

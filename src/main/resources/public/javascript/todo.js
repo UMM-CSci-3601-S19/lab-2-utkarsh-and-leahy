@@ -8,6 +8,7 @@ function getAllTodos() {
   });
 }
 
+
 function HttpClient() {
   this.get = function (aUrl, aCallback) {
     var anHttpRequest = new XMLHttpRequest();
