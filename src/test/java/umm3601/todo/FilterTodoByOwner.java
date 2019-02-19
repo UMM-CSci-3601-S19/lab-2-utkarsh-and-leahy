@@ -18,7 +18,7 @@ public class FilterTodoByOwner {
     Todo[] allTodos = db.listTodos(new HashMap<>());
 
     Todo[] todosBlanche = db.findOwner(allTodos, "Blanche");
-    assertEquals("Incorrect Amnount With Owner Name", 43, todosBlanche.length);
+    assertEquals("Incorrect Amount With Owner Name", 43, todosBlanche.length);
 
     Todo[] todosFry = db.findOwner(allTodos, "Fry");
     assertEquals("Incorrect Amount With Owner Name", 61, todosFry.length);
