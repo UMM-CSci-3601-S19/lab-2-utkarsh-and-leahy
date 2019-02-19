@@ -35,7 +35,6 @@ function getCompleteTodos() {
   var limit = document.getElementById("limit").value;
   var status = document.getElementById("complete").value;
 
-
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
   }

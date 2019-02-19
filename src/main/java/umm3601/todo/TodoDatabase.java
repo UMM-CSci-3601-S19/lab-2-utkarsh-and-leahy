@@ -35,15 +35,15 @@ public class TodoDatabase {
     //Filter by status. Parses the string attached to status(which should be "true" or "false") as a boolean and calls
     // appropriate method below
     if(queryParams.containsKey("status")){
-      boolean currentStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
-      if(currentStatus) {
+      String statusString = queryParams.get("status")[0];
+      if(statusString.equals("complete")) {
         filteredTodos = completeTodo(filteredTodos);
-      } else if(!currentStatus){
+      } else if(statusString.equals("incomplete")){
         filteredTodos = incompleteTodo(filteredTodos);
       }
     }
 
-    
+
     return filteredTodos;
   }
 
