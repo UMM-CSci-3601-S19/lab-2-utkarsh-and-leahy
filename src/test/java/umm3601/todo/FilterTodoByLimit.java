@@ -19,7 +19,7 @@ public class FilterTodoByLimit {
     assertEquals("Incorrect number of todos with limit 5", 5, limit5Todos.length);
 
     Todo[] limit10Todos = db.limitTodo(allTodos, 10);
-    assertEquals("Incorrect number of todos with limit 10", 1, limit10Todos.length);
+    assertEquals("Incorrect number of todos with limit 10", 10, limit10Todos.length);
   }
 
 }
