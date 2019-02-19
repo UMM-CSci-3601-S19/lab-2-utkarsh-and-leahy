@@ -14,12 +14,15 @@
 <div id="jsonDumpTodos" style="margin-top:20px"> Json will go here</div>
 
 <label for="limit">Limit:</label><input id="limit" type="text" name="limit">
-<button type="button" id="getTodosByLimit"> Limit Todos</button>
+<button type="button" id="getTodosByLimit"> Limit todos</button>
 
 <form action="">
   <input type="radio" id="complete" name="status" value="complete"> Complete<br>
   <input type="radio" id="incomplete" name="status" value="incomplete"> Incomplete<br>
 </form>
+
+<label for="wordSearch">Word:</label><input id="wordSearch" type="text" name="wordSearch">
+<button type="button" id="getTodoByBody"> Search</button>
 
 <script>
   window.onload = function () {
@@ -36,6 +39,9 @@
 
     element = document.getElementById('incomplete');
     element.addEventListener("click", getIncompleteTodos, true);
+
+    element = document.getElementById('getTodoByBody');
+    element.addEventListener("click",getLimit, true);
 
     //var element = document.getElementById('both');
     //element.addEventListener("click", getLimit, true);

@@ -14,9 +14,13 @@ function getLimit(){
   var httpClient = new HttpClient();
   var URL = "/api/todo?";
   var limit = document.getElementById("limit").value;
+  var wordSearch = document.getElementById("wordSearch").value;
 
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
+  }
+  if(wordSearch !== ""){
+    URL = URL + "contains=" + wordSearch + "&";
   }
 
   console.log("Master URL is:" + URL);
