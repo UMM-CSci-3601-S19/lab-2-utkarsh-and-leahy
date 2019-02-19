@@ -8,7 +8,7 @@ function getAllTodos() {
   });
 }
 
-function getLimit(){
+function getEverything(){
   console.log("Master function");
 
   var httpClient = new HttpClient();
@@ -19,19 +19,21 @@ function getLimit(){
   var category = document.getElementById("category").value;
 
 
-  if(limit !== ""){
-    URL = URL + "limit=" + limit + "&";
+  if (owner !== "") {
+    URL = URL + "owner=" + owner + "&"
   }
+
+
+  if (category !== "") {
+    URL = URL + "category=" + category + "&"
+  }
+
   if(wordSearch !== ""){
     URL = URL + "contains=" + wordSearch + "&";
   }
 
-  if (owner !== "") {
-    URL = URL + "contains=" + owner + "&"
-  }
-
-  if (category !== "") {
-    URL = URL + "contains=" + owner + "&"
+  if(limit !== ""){
+    URL = URL + "limit=" + limit + "&";
   }
 
   console.log("Master URL is:" + URL);
@@ -49,12 +51,30 @@ function getCompleteTodos() {
   var URL = "/api/todo?";
   var limit = document.getElementById("limit").value;
   var status = document.getElementById("complete").value;
+  var wordSearch = document.getElementById("wordSearch").value;
+  var owner = document.getElementById("owner").value;
+  var category = document.getElementById("category").value;
+
+
+
+
+  if (owner !== "") {
+    URL = URL + "owner=" + owner + "&"
+  }
+
+  if (category !== "") {
+    URL = URL + "category=" + category + "&"
+  }
+
+  if(wordSearch !== ""){
+    URL = URL + "contains=" + wordSearch + "&";
+  }
+
+  URL = URL + "status=" + status + "&";
 
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
   }
-
-  URL = URL + "status=" + status + "&";
 
   console.log("The complete URL is:" + URL);
 
@@ -70,13 +90,29 @@ function getIncompleteTodos() {
   var URL = "/api/todo?";
   var limit = document.getElementById("limit").value;
   var status = document.getElementById("incomplete").value;
+  var wordSearch = document.getElementById("wordSearch").value;
+  var owner = document.getElementById("owner").value;
+  var category = document.getElementById("category").value;
 
+
+  if (owner !== "") {
+    URL = URL + "owner=" + owner + "&"
+  }
+
+
+  if (category !== "") {
+    URL = URL + "category=" + category + "&"
+  }
+
+  if(wordSearch !== ""){
+    URL = URL + "contains=" + wordSearch + "&";
+  }
+
+  URL = URL + "status=" + status + "&";
 
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
   }
-
-  URL = URL + "status=" + status + "&";
 
   console.log("The incomplete URL is:" + URL);
 

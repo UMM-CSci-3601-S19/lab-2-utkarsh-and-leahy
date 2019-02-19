@@ -17,18 +17,22 @@
   <input type="radio" id="incomplete" name="status" value="incomplete"> Incomplete<br>
 </form>
 
+<hr/>
+
 <label for="limit">Limit:</label><input id="limit" type="text" name="limit">
-<button type="button" id="getTodosByLimit"> Limit todos</button>
+
 
 
 <div><label for="wordSearch">Search Body:</label><input id="wordSearch" type="text" name="wordSearch">
-<button type="button" id="getTodoByBody"> Search</button></div>
+</div>
 
 <div><label for="owner">Search Owner:</label><input id="owner" type="text" name="owner">
-<button type="button" id="getTodosByOwner"> Search</button></div>
+</div>
 
 <div><label for="category">Search Category:</label><input id="category" type="text" name="category">
-<button type="button" id="getTodosByCategory"> Search</button></div>
+</div>
+
+<div><button type="button" id="getTodosByLimit"> Search</button></div>
 
 <div id="jsonDumpTodos" style="margin-top:20px"> Json will go here</div>
 
@@ -40,7 +44,7 @@
     element.addEventListener("click", getAllTodos, true);
 
     element = document.getElementById('getTodosByLimit');
-    element.addEventListener("click", getLimit, true);
+    element.addEventListener("click", getEverything, true);
 
     element = document.getElementById('complete');
     element.addEventListener("click", getCompleteTodos, true);
@@ -48,14 +52,6 @@
     element = document.getElementById('incomplete');
     element.addEventListener("click", getIncompleteTodos, true);
 
-    element = document.getElementById('getTodoByBody');
-    element.addEventListener("click",getLimit, true);
-
-    element = document.getElementById('getTodoByOwner');
-    element.addEventListener("click",getLimit, true);
-
-    element = document.getElementById('getTodoByCategory');
-    element.addEventListener("click",getLimit, true);
 
 
     //var element = document.getElementById('both');
