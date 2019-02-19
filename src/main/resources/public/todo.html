@@ -9,17 +9,8 @@
 <body>
 <button type="button" id="getAllTodos">Get All To-Do</button>
 
-<hr/>
 
-
-<form action="">
-  <input type="radio" id="complete" name="status" value="complete"> Complete<br>
-  <input type="radio" id="incomplete" name="status" value="incomplete"> Incomplete<br>
-</form>
-
-<hr/>
-
-<label for="limit">Limit:</label><input id="limit" type="text" name="limit">
+<div><label for="limit">Limit:</label><input id="limit" type="text" name="limit"></div>
 
 
 
@@ -35,6 +26,17 @@
 <div><label for="sortBy">Sort By:</label><input id="sortBy" type="text" name="sortBy"></div>
 
 <div><button type="button" id="getTodosByLimit"> Search</button></div>
+
+<hr/>
+
+<p><b>Choose Complete or Incomplete Last</b></p>
+
+<form action="">
+  <input type="radio" id="complete" name="status" value="complete"> Complete<br>
+  <input type="radio" id="incomplete" name="status" value="incomplete"> Incomplete<br>
+</form>
+
+<hr/>
 
 <div id="jsonDumpTodos" style="margin-top:20px"> Json will go here</div>
 
