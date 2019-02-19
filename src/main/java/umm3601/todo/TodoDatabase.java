@@ -35,15 +35,22 @@ public class TodoDatabase {
     //Filter by status. Parses the string attached to status(which should be "true" or "false") as a boolean and calls
     // appropriate method below
     if(queryParams.containsKey("status")){
-      boolean currentStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
-      if(currentStatus) {
+      String statusString = queryParams.get("status")[0];
+      if(statusString.equals("complete")) {
         filteredTodos = completeTodo(filteredTodos);
-      } else if(!currentStatus){
+      } else if(statusString.equals("incomplete")){
         filteredTodos = incompleteTodo(filteredTodos);
       }
     }
 
-    
+    //Filter by bodies containing a string
+    if(queryParams.containsKey("contains")){
+      String bodyString = queryParams.get("contains")[0];
+      filteredTodos = findStringinTodo(filteredTodos,bodyString);
+      System.out.println(filteredTodos);
+    }
+
+
     return filteredTodos;
   }
 
@@ -59,6 +66,10 @@ public class TodoDatabase {
   //Receives an array from the listTodos function and uses filter to find entries where status is false and returns those as a new array
   public Todo[] incompleteTodo(Todo[] todos){
     return Arrays.stream(todos).filter(x -> x.status == false).toArray(Todo[]::new);
+  }
+
+  public Todo[] findStringinTodo(Todo[] todos, String bodyString){
+    return Arrays.stream(todos).filter(x -> x.body.contains(bodyString)).toArray(Todo[]::new);
   }
 
 }
