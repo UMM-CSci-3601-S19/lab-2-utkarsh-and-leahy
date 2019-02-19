@@ -4,7 +4,7 @@ function getAllTodos() {
 
   var httpClient = new HttpClient();
   httpClient.get("/api/todo", function (returned_json) {
-    document.getElementById('jsonDumpTodos').innerHTML = JSON.stringify(returned_json, null, 1);
+    document.getElementById('jsonDumpTodos').innerHTML = returned_json;
   });
 }
 
@@ -15,6 +15,7 @@ function getLimit(){
   var URL = "/api/todo?";
   var limit = document.getElementById("limit").value;
   var wordSearch = document.getElementById("wordSearch").value;
+
 
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
