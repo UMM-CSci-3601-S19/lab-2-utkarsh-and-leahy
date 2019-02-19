@@ -46,7 +46,7 @@ public class TodoDatabase {
     //Filter by bodies containing a string
     if(queryParams.containsKey("contains")){
       String bodyString = queryParams.get("contains")[0];
-      filteredTodos = findStringinTodo(filteredTodos,bodyString);
+      filteredTodos = findStringInTodo(filteredTodos,bodyString);
       System.out.println(filteredTodos);
     }
 
@@ -68,7 +68,7 @@ public class TodoDatabase {
     return Arrays.stream(todos).filter(x -> x.status == false).toArray(Todo[]::new);
   }
 
-  public Todo[] findStringinTodo(Todo[] todos, String bodyString){
+  public Todo[] findStringInTodo(Todo[] todos, String bodyString){
     return Arrays.stream(todos).filter(x -> x.body.contains(bodyString)).toArray(Todo[]::new);
   }
 
