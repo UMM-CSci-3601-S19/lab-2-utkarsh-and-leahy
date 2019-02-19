@@ -14,10 +14,10 @@ public class FilterByBody {
     TodoDatabase db = new TodoDatabase("src/main/data/todos.json");
     Todo[] allTodos = db.listTodos(new HashMap<>());
 
-    Todo[] todosEst = db.findStringInTodo(allTodos, "Est");
-    assertEquals("Incorrect Amount With Matching Body", 19, todosEst.length);
+    Todo[] todosEst = db.findStringInTodo(allTodos, "est");
+    assertEquals("Incorrect Amount With Matching Body", 80, todosEst.length);
 
     Todo[] todosTempor = db.findStringInTodo(allTodos, "tempor");
-    assertEquals("Incorrect Amount With Matching Body", 4, todosTempor.length);
+    assertEquals("Incorrect Amount With Matching Body", 68, todosTempor.length);
   }
 }
