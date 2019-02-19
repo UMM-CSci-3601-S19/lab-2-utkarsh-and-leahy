@@ -17,7 +17,7 @@ function getEverything(){
   var wordSearch = document.getElementById("wordSearch").value;
   var owner = document.getElementById("owner").value;
   var category = document.getElementById("category").value;
-
+  var sortBy = document.getElementById("sortBy").value;
 
   if (owner !== "") {
     URL = URL + "owner=" + owner + "&"
@@ -34,6 +34,10 @@ function getEverything(){
 
   if(limit !== ""){
     URL = URL + "limit=" + limit + "&";
+  }
+
+  if(sortBy !== "") {
+    URL = URL + "orderBy=" + sortBy + "&";
   }
 
   console.log("Master URL is:" + URL);
