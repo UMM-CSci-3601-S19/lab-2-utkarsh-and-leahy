@@ -15,6 +15,8 @@ function getLimit(){
   var URL = "/api/todo?";
   var limit = document.getElementById("limit").value;
   var wordSearch = document.getElementById("wordSearch").value;
+  var owner = document.getElementById("owner").value;
+  var category = document.getElementById("category").value;
 
 
   if(limit !== ""){
@@ -22,6 +24,14 @@ function getLimit(){
   }
   if(wordSearch !== ""){
     URL = URL + "contains=" + wordSearch + "&";
+  }
+
+  if (owner !== "") {
+    URL = URL + "contains=" + owner + "&"
+  }
+
+  if (category !== "") {
+    URL = URL + "contains=" + owner + "&"
   }
 
   console.log("Master URL is:" + URL);
