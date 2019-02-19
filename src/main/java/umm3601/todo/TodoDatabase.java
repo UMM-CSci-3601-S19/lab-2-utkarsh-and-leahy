@@ -47,7 +47,12 @@ public class TodoDatabase {
     if(queryParams.containsKey("contains")){
       String bodyString = queryParams.get("contains")[0];
       filteredTodos = findStringInTodo(filteredTodos,bodyString);
-      System.out.println(filteredTodos);
+    }
+
+    //Filter by owner
+    if(queryParams.containsKey("owner")){
+      String ownerName = queryParams.get("owner")[0];
+      filteredTodos = findOwner(filteredTodos,ownerName);
     }
 
 
@@ -70,6 +75,10 @@ public class TodoDatabase {
 
   public Todo[] findStringInTodo(Todo[] todos, String bodyString){
     return Arrays.stream(todos).filter(x -> x.body.contains(bodyString)).toArray(Todo[]::new);
+  }
+
+  public Todo[] findOwner(Todo[] todos, String ownerName){
+    return Arrays.stream(todos).filter(x -> x.owner.equals("ownerName")).toArray(Todo[]::new);
   }
 
 }
