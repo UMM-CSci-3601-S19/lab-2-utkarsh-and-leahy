@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 
+
 public class TodoDatabase {
 
   private Todo[] allTodos;
@@ -25,11 +26,10 @@ public class TodoDatabase {
   public Todo[] listTodos(Map<String, String[]> queryParams) {
     Todo[] filteredTodos = allTodos;
 
-    //Limit the amount of To-Dos shown
-    if(queryParams.containsKey("limit")){
-      int targetLimit = Integer.parseInt(queryParams.get("limit")[0]);
-      // pass filteredTodo array and an integer,targetLimit, to method limitTodo method below and set filteredTodo to the new array returned
-      filteredTodos = limitTodo(filteredTodos,targetLimit);
+    //Filter by owner
+    if(queryParams.containsKey("owner")){
+      String ownerName = queryParams.get("owner")[0];
+      filteredTodos = findOwner(filteredTodos,ownerName);
     }
 
     //Filter by status. Parses the string attached to status(which should be "true" or "false") as a boolean and calls
@@ -49,18 +49,43 @@ public class TodoDatabase {
       filteredTodos = findStringInTodo(filteredTodos,bodyString);
     }
 
-    //Filter by owner
-    if(queryParams.containsKey("owner")){
-      String ownerName = queryParams.get("owner")[0];
-      filteredTodos = findOwner(filteredTodos,ownerName);
-    }
-
     //Filter by categories
     if(queryParams.containsKey("category")) {
       String categoryName = queryParams.get("category")[0];
       filteredTodos = findCategory(filteredTodos, categoryName);
     }
 
+    //Filter by categories
+    if(queryParams.containsKey("sortBy")){
+      String categories = queryParams.get("sortBy")[0];
+      switch(categories) {
+        case "owner":
+          filteredTodos = sortByOwner(filteredTodos);
+          break;
+
+        case "status":
+          filteredTodos = sortByStatus(filteredTodos);
+          break;
+
+        case "body":
+          filteredTodos = sortByBody(filteredTodos);
+          break;
+
+        case "category":
+          filteredTodos = sortByCategory(filteredTodos);
+          break;
+      }
+
+    }
+
+
+
+    //Limit the amount of To-Dos shown
+    if(queryParams.containsKey("limit")){
+      int targetLimit = Integer.parseInt(queryParams.get("limit")[0]);
+      // pass filteredTodo array and an integer,targetLimit, to method limitTodo method below and set filteredTodo to the new array returned
+      filteredTodos = limitTodo(filteredTodos,targetLimit);
+    }
 
     return filteredTodos;
   }
@@ -89,6 +114,26 @@ public class TodoDatabase {
 
   public Todo[] findCategory(Todo[] todos, String categoryName) {
     return Arrays.stream(todos).filter(x -> x.category.equals(categoryName)).toArray(Todo[]::new);
+  }
+
+  public Todo[] sortByOwner(Todo[] todos){
+    Arrays.sort(todos, new CompareOwner());
+    return todos;
+  }
+
+  public Todo[] sortByStatus(Todo[] todos){
+    Arrays.sort(todos, new CompareStatus());
+    return todos;
+  }
+
+  public Todo[] sortByBody(Todo[] todos){
+    Arrays.sort(todos, new CompareBody());
+    return todos;
+  }
+
+  public Todo[] sortByCategory(Todo[] todos){
+    Arrays.sort(todos, new CompareCategory());
+    return todos;
   }
 
 }
