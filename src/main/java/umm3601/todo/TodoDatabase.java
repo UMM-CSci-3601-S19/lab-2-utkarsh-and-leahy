@@ -43,6 +43,13 @@ public class TodoDatabase {
       }
     }
 
+    //Filter by bodies containing a string
+    if(queryParams.containsKey("contains")){
+      String bodyString = queryParams.get("contains")[0];
+      filteredTodos = findStringinTodo(filteredTodos,bodyString);
+      System.out.println(filteredTodos);
+    }
+
 
     return filteredTodos;
   }
@@ -59,6 +66,10 @@ public class TodoDatabase {
   //Receives an array from the listTodos function and uses filter to find entries where status is false and returns those as a new array
   public Todo[] incompleteTodo(Todo[] todos){
     return Arrays.stream(todos).filter(x -> x.status == false).toArray(Todo[]::new);
+  }
+
+  public Todo[] findStringinTodo(Todo[] todos, String bodyString){
+    return Arrays.stream(todos).filter(x -> x.body.contains(bodyString)).toArray(Todo[]::new);
   }
 
 }
